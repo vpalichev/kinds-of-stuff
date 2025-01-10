@@ -1,4 +1,5 @@
 # kinds-of-stuff
-sha1 W0BEHAOSQ0EL60ZI06SH0
+more randomness tests:sha1 W0BEHAOSQ0EL60ZI06SH0
 ghsha256jHqva0ZjPgp4tnAJ0#_
 hmColo()r0x_xScheme_8!x3^7_yaREGYU7WQ05CCFNDC63632YNAVTGQSBVLJ_gg3sz3zry3h7xeyxc4q7yy70irkdc4vwlxt_pp34G04EEBQ5E7EYF3R
+
