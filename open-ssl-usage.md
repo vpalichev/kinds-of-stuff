@@ -242,3 +242,40 @@ Use the PowerShell one-liner above any time you need to convert a 16-character s
 You cannot use -pass pass:… together with a forced zero IV if you need an exact match.
 
 That’s all — now you have both the automatic conversion and the reason why the text form didn’t work with zero IV. Happy encrypting!
+
+
+Or maybe the encryption could wok like this:
+  # === Configuration ===                                                                                                                                                                                                                                $plaintext = "silleno"
+  $keyStr    = "2601260126012601"                                                                                                                                                                                                                        $cipherB64 = "zRE1zlxFDpHqb39SPpnD2Q=="
+
+  # === Setup ===
+  $aes = [System.Security.Cryptography.Aes]::Create()
+  $aes.Mode    = [System.Security.Cryptography.CipherMode]::ECB
+  $aes.Padding = [System.Security.Cryptography.PaddingMode]::PKCS7
+  $aes.Key     = [System.Text.Encoding]::ASCII.GetBytes($keyStr)
+
+  # === Encrypt ===
+  $enc    = $aes.CreateEncryptor()
+  $bytes  = [System.Text.Encoding]::UTF8.GetBytes($plaintext)
+  $cipher = $enc.TransformFinalBlock($bytes, 0, $bytes.Length)
+  [Convert]::ToBase64String($cipher)
+
+  # === Decrypt ===
+  $dec   = $aes.CreateDecryptor()
+  $raw   = [Convert]::FromBase64String($cipherB64)
+  $plain = $dec.TransformFinalBlock($raw, 0, $raw.Length)
+  [System.Text.Encoding]::UTF8.GetString($plain)
+
+  $aes.Dispose()
+
+
+   Git Bash:
+  # Encrypt
+  echo -n "silleno" | openssl enc -aes-128-ecb \
+    -K $(echo -n "2601260126012601" | xxd -p) -nosalt -a
+
+  # Decrypt
+  echo "zRE1zlxFDpHqb39SPpnD2Q==" | openssl enc -aes-128-ecb -d \
+    -K $(echo -n "2601260126012601" | xxd -p) -nosalt -a
+
+
