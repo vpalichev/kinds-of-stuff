@@ -245,8 +245,11 @@ That’s all — now you have both the automatic conversion and the reason why t
 
 
 Or maybe the encryption could wok like this:
-  # === Configuration ===                                                                                                                                                                                                                                $plaintext = "silleno"
-  $keyStr    = "2601260126012601"                                                                                                                                                                                                                        $cipherB64 = "zRE1zlxFDpHqb39SPpnD2Q=="
+  # === Configuration ===                                                                                                                                                                                                                               
+  
+  $plaintext = "  "
+  $keyStr    = "  "                                                                                                                                                                                                                      
+  $cipherB64 = "  "
 
   # === Setup ===
   $aes = [System.Security.Cryptography.Aes]::Create()
