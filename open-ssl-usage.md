@@ -274,11 +274,11 @@ Or maybe the encryption could wok like this:
 
    Git Bash:
   # Encrypt
-  echo -n "silleno" | openssl enc -aes-128-ecb \
-    -K $(echo -n "2601260126012601" | xxd -p) -nosalt -a
+  echo -n "  " | openssl enc -aes-128-ecb \
+    -K $(echo -n "  " | xxd -p) -nosalt -a
 
   # Decrypt
   echo "zRE1zlxFDpHqb39SPpnD2Q==" | openssl enc -aes-128-ecb -d \
-    -K $(echo -n "2601260126012601" | xxd -p) -nosalt -a
+    -K $(echo -n "  " | xxd -p) -nosalt -a
 
 
